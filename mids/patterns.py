@@ -6,13 +6,8 @@
 **** 4444
 """
 
-def p_stars(n):
-    for i in range(1,n+1):
-        for j in range(1,i+1):
-            print('* ', end="")
-        for k in range(1,i+1):
-            print(f'{i}', end="")
-        print()
+def pattern(s):
+    for i in range(1, s+1):
+        print("*"*i, str(i)*i)
 
-n = int(input("enter ending number"))
-p_stars(n)
+pattern(int(input("enter ending number: ")))
