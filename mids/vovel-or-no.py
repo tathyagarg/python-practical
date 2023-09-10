@@ -1,10 +1,5 @@
 # 4. Write a program to check given character is vowel or not.
 
 letter = input("enter a letter: ")
-
-vovels = ['A','E','I','O','U','a','e','i','o','u']
-
-if letter in vovels:
-    print(f"the letter {letter} is a vovel")
-else:
-    print(f"the letter {letter} is not a vovel")
+vowels = 'AEIOUaeiou'
+print(f"{letter} is {'not ' if letter not in vowels else ""}a vowel")
