@@ -6,31 +6,27 @@
 
 import math
 
-def ar_circl(unit):
-    if unit == 'r':
-        radius = float(input("enter the radius of the circle: "))
-        ar_rcircl = math.pi * ( radius ** 2 )
-        print(f"area of circle is {ar_rcircl}")
-    elif unit == 'd':
-        diameter = float(input("enter the diameter of the circle: "))
-        ar_dcircl = math.pi * (( diameter ** 2) / 4)
-        print(f"area of cirlce is {ar_dcircl}")
+def menu() -> tuple[int, bool|None]:
+    val = int(input("1. Find area of circle\n2. Find area of square\nEnter your choice: "))
+    if val == 1:
+        r_d = input('Enter \'r\' for radius as input and \'d\' for diameter: ').lower()
+        if r_d not in 'rd':
+            print("Error")
+            return
+        val = val, r_d=='r'
+    else: val = val, None
+    return val
 
-    return unit
+def circle(unit: bool) -> None:
+    v = int(input(f"Enter the {['diameter', 'radius'][unit]}: "))
+    print(f"Area of the circle is {math.pi * (v/(2-unit))**2:.2f}")
 
-def ar_square(ar_sq):
-    print(f"area of circle is {ar_sq}")
-    
-    return ar_sq
+def square(buffer: None) -> None:
+    side = int(input('Enter the length of the square\'s side: '))
+    print(f"Area of the square is: {side**2}")
 
-choice = input("Do you want area of circle or square as 'cirle' or 'square'")
+func_map = {1: circle, 2: square}
 
-if choice == 'circle':
-    unit = input("do you have radius or diameter as 'r' or 'd': ")
-    print(ar_circl(unit))
-elif choice == 'square':
-    side = float(input("enter the side length: "))
-    ar_sq = side ** 2
-    print(ar_square(ar_sq))
-else:
-    print("invalid choice, please use either 'circle' or 'square'")
+if __name__ == "__main__":
+    f, i = menu()
+    func_map[f](i)
