@@ -4,10 +4,7 @@ n = int(input("Enter the value of a number: "))
 
 try:
     n = int(n)
-    sum = 0
-    
-    for i in range(0,n+1):
-        sum = sum + i
+    sum = int(n/2*(n+1)) # Use the sum formula S = n/2 * (n+1) which gives time complexity O(1) instead of a loop which gives time complexity O(n)
     print(f"the sum is {sum}")
-except:
+except ValueError: # don't use bare except clause, specify the error you are catching.
     print("enter non integer number / non negative / invalid")
